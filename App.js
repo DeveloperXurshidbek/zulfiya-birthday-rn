@@ -1,14 +1,24 @@
 import * as React from "react";
-import { Text, View } from "react-native";
+import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Ionicons from "react-native-vector-icons/Ionicons";
 import Home from "./screens/Home";
 import PoemsScreen from "./screens/PoemsScreen";
 import Header from "./components/Header";
+import AboutScreen from "./screens/AboutScreen";
 
 const homeName = "Home";
 const poemsScreen = "Poems";
+const aboutScreen = "About";
+
+// Icons
+const homeIcon = require("./assets/icons/home.png");
+const playIcon = require("./assets/icons/play.png");
+const notepadIcon = require("./assets/icons/notepad.png");
+
+const homeIconO = require("./assets/icons/home-outline.png");
+const playIconO = require("./assets/icons/play-outline.png");
+const notepadIconO = require("./assets/icons/notepad-outline.png");
 
 const Tab = createBottomTabNavigator();
 
@@ -28,12 +38,19 @@ export default function App() {
             let rn = route.name;
 
             if (rn === homeName) {
-              iconName = focused ? "home" : "home-outline";
+              iconName = focused ? homeIcon : homeIconO;
             } else if (rn === poemsScreen) {
-              iconName = focused ? "list" : "list-outline";
+              iconName = focused ? playIcon : playIconO;
+            } else if (rn === aboutScreen) {
+              iconName = focused ? notepadIcon : notepadIconO;
             }
 
-            return <Ionicons name={iconName} color={color} size={size} />;
+            return (
+              <Image
+                source={iconName}
+                style={{ width: 30, height: 30, tintColor: "#b8abfd" }}
+              />
+            );
           },
           tabBarActiveTintColor: "#b8abfd",
           tabBarInactiveTintColor: "gray",
@@ -41,6 +58,7 @@ export default function App() {
       >
         <Tab.Screen name={homeName} component={Home} />
         <Tab.Screen name={poemsScreen} component={PoemsScreen} />
+        <Tab.Screen name={aboutScreen} component={AboutScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );

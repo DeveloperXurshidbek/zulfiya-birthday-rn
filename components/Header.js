@@ -1,7 +1,7 @@
-import { View, Text, Image, TouchableOpacity } from "react-native";
+import { View, Text, Image, TouchableOpacity, Alert } from "react-native";
 import React from "react";
 
-export default function Header({ navigation }) {
+export default function Header() {
   return (
     <View
       style={{
@@ -25,7 +25,9 @@ export default function Header({ navigation }) {
       </Text>
       <TouchableOpacity
         activeOpacity={0.6}
-        onPress={() => navigation.openDrawer()}
+        onPress={() =>
+          Alert.alert("After clicking on the button, The drawer will open")
+        }
       >
         <Image
           style={{
