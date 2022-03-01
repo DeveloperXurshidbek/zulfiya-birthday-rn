@@ -6,6 +6,9 @@ import Home from "./screens/Home";
 import PoemsScreen from "./screens/PoemsScreen";
 import Header from "./components/Header";
 import AboutScreen from "./screens/AboutScreen";
+import PoemBody from "./screens/PoemBody";
+
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 const homeName = "Home";
 const poemsScreen = "Poems";
@@ -21,6 +24,7 @@ const playIconO = require("./assets/icons/play-outline.png");
 const notepadIconO = require("./assets/icons/notepad-outline.png");
 
 const Tab = createBottomTabNavigator();
+const Stack = createNativeStackNavigator();
 
 export default function App() {
   return (
